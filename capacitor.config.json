@@ -1,0 +1,8 @@
+{
+  "appId": "com.madrastilive.app",
+  "appName": "Madrasti Live",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

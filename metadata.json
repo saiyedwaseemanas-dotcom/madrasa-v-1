@@ -1,0 +1,6 @@
+{
+  "name": "مدرستي لايف - Madrasti Live",
+  "description": "منصة مدرستي لايف التعليمية التفاعلية للبث المباشر والحصص المسجلة والمكتبة الرقمية",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #f9f9ff;
+  --color-surface-dim: #cfdaf2;
+  --color-surface-bright: #f9f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f3ff;
+  --color-surface-container: #e7eeff;
+  --color-surface-container-high: #dee8ff;
+  --color-surface-container-highest: #d8e3fb;
+  --color-on-surface: #111c2d;
+  --color-on-surface-variant: #3d494b;
+  --color-inverse-surface: #263143;
+  --color-inverse-on-surface: #ecf1ff;
+  --color-outline: #6d797b;
+  --color-outline-variant: #bcc9cb;
+  --color-surface-tint: #006972;
+  --color-primary: #006972;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #0fa3b1;
+  --color-on-primary-container: #003237;
+  --color-inverse-primary: #60d7e5;
+  --color-secondary: #495f82;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #bfd5fe;
+  --color-on-secondary-container: #465c7f;
+  --color-tertiary: #bd0d21;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #ff5b58;
+  --color-on-tertiary-container: #61000a;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #8ef2ff;
+  --color-primary-fixed-dim: #60d7e5;
+  --color-on-primary-fixed: #001f23;
+  --color-on-primary-fixed-variant: #004f56;
+  --color-secondary-fixed: #d5e3ff;
+  --color-secondary-fixed-dim: #b1c7f0;
+  --color-on-secondary-fixed: #001c3b;
+  --color-on-secondary-fixed-variant: #314769;
+  --color-tertiary-fixed: #ffdad7;
+  --color-tertiary-fixed-dim: #ffb3ae;
+  --color-on-tertiary-fixed: #410004;
+  --color-on-tertiary-fixed-variant: #930014;
+  --color-background: #f9f9ff;
+  --color-on-background: #111c2d;
+  --color-surface-variant: #d8e3fb;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-margin-mobile: 1rem;
+  --spacing-gutter-mobile: 0.75rem;
+
+  --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+  --font-sans: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+@layer base {
+  html, body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    direction: rtl;
+    background-color: #f9f9ff;
+    color: #111c2d;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom utility classes matching the design system */
+.font-headline-xl { font-size: 32px; line-height: 44px; font-weight: 700; }
+.font-headline-lg { font-size: 26px; line-height: 36px; font-weight: 700; }
+.font-headline-md { font-size: 20px; line-height: 30px; font-weight: 600; }
+.font-headline-sm { font-size: 18px; line-height: 26px; font-weight: 600; }
+.font-body-lg { font-size: 16px; line-height: 26px; font-weight: 400; }
+.font-body-md { font-size: 14px; line-height: 22px; font-weight: 400; }
+.font-body-sm { font-size: 12px; line-height: 18px; font-weight: 400; }
+.font-label-lg { font-size: 14px; line-height: 20px; font-weight: 600; }
+.font-label-md { font-size: 12px; line-height: 16px; font-weight: 500; }
+.font-label-sm { font-size: 10px; line-height: 14px; font-weight: 600; }
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+/* Safe area padding */
+.pt-safe {
+  padding-top: max(env(safe-area-inset-top, 0px), 0px);
+}
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 0px);
+}
+
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
