@@ -26,37 +26,31 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          cache: 'gradle'
 
-      - name: Setup Android SDK Tools and Platform 35
+      - name: Setup Android SDK Platforms
         run: |
-          echo "Setting up Android SDK location and platform..."
-          mkdir -p android
-          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "build-tools;35.0.0" || true
+          ANDROID_SDK_PATH=${ANDROID_HOME:-$ANDROID_SDK_ROOT}
+          echo "sdk.dir=$ANDROID_SDK_PATH" > android/local.properties
+          mkdir -p "$ANDROID_SDK_PATH/licenses"
+          yes | $ANDROID_SDK_PATH/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          $ANDROID_SDK_PATH/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-36" "build-tools;36.0.0" "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build web application
         run: npm run build
 
-      - name: Initialize or Sync Capacitor Android
+      - name: Sync Capacitor Android
         run: |
           if [ ! -d "android" ]; then
-            echo "Adding Android platform..."
             npx cap add android
           else
-            echo "Syncing Android platform..."
             npx cap sync android
           fi
-          # Ensure local.properties exists after sync
-          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          build-root-directory: android
+          ANDROID_SDK_PATH=${ANDROID_HOME:-$ANDROID_SDK_ROOT}
+          echo "sdk.dir=$ANDROID_SDK_PATH" > android/local.properties
 
       - name: Build Debug APK with Gradle
         run: |
